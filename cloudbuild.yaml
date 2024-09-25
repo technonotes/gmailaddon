@@ -1,0 +1,13 @@
+steps:
+# Build the container image
+- name: 'gcr.io/cloud-builders/docker'
+  args: ['build', '-t', 'europe-north1-docker.pkg.dev/innovators-hive-2024/innovatorshive2024', '.']
+# Push the container image to Container Registry
+- name: 'gcr.io/cloud-builders/docker'
+  args: ['push', 'europe-north1-docker.pkg.dev/innovators-hive-2024/innovatorshive2024']
+# Deploy container image to Cloud Run
+- name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
+  entrypoint: gcloud
+  args: ['run', 'deploy', 'gmailaddon', '--image', 'europe-north1-docker.pkg.dev/innovators-hive-2024/innovatorshive2024/gmailaddon', '--region', 'europe-north1']
+images:
+- europe-north1-docker.pkg.dev/innovators-hive-2024/innovatorshive2024/gmailaddon
