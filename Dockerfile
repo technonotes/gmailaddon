@@ -12,7 +12,7 @@ COPY go.mod ./
 RUN go mod download
 
 # Copy rest of the application source code
-COPY . ./
+COPY *.go go.mod go.sum ./
 
 # Compile the application to /app.
 # Skaffold passes in debug-oriented compiler flags
