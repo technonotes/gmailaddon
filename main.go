@@ -10,7 +10,7 @@ import (
 	"golang.org/x/oauth2"
 )
 
-const spreadsheetId = "1Uskz7OqC5q8ldMlzHZTLiX2L18t7ISGTC5w9AP9fyxk"
+const spreadsheetId = "1cxwE4vtDeLtnVBbiN8pRz_VqQ5cxTj9px8xvmVkP0HA"
 
 /*
 Reading the email
@@ -40,6 +40,11 @@ func Invoice(w http.ResponseWriter, r *http.Request) {
 			w.WriteHeader(http.StatusInternalServerError)
 			return
 		}
+		slog.Debug(
+			"Received request",
+			"event",
+			event.Gmail,
+		)
 		userToken := *event.AuthorizationEventObject.UserOAuthToken
 		orderID, maxAmount, date, err := getDataFromMail(event, userToken)
 		if err != nil {

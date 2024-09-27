@@ -11,7 +11,7 @@ func placeholderCard() addons.RenderAction {
 	navigation := action.AddNavigation()
 	card := navigation.AddCard()
 	card.AddHeader("CIRCLE")
-	infoSection := card.AddSection("Invoice kvitteringer")
+	infoSection := card.AddSection("Invoice")
 	infoSection.AddWidget().
 		AddImage("GMail add-on logo", "https://storage.googleapis.com/innovatorshivepictures/gmailaddonlogo.png")
 	infoSection.AddWidget().
@@ -23,7 +23,15 @@ func submittedCard(notificationStr string) addons.RenderActionWrapper {
 	var renderActionWrapper addons.RenderActionWrapper
 	renderAction := renderActionWrapper.AddRenderAction()
 	action := renderAction.CreateAction()
-	action.AddNotification(notificationStr)
+	// action.AddNotification(notificationStr)
+	navigation := action.AddNavigation()
+	card := navigation.AddCard()
+	card.AddHeader("CIRCLE")
+	infoSection := card.AddSection("Invoice")
+	infoSection.AddWidget().
+		AddImage("GMail add-on logo", "https://storage.googleapis.com/innovatorshivepictures/gmailaddonlogo.png")
+	infoSection.AddWidget().
+		AddTextParagraph(notificationStr)
 	return renderActionWrapper
 }
 
