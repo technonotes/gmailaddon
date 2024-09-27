@@ -75,6 +75,7 @@ func getMail(e addons.EventObject, userToken string) (*gmail.Message, error) {
 	if err != nil {
 		return nil, fmt.Errorf("unable to retrieve message: %v", err)
 	}
+	slog.Info("Message content", "info", message)
 	return message, nil
 }
 

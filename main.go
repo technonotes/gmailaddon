@@ -139,14 +139,14 @@ func returnError(w http.ResponseWriter) {
 	// section.AddWidget().
 	// 	AddTextParagraph("Error in processing mail, is this an Invoice mail?")
 	renderAction := getErrorCard("Error in processing mail, is this an Invoice mail?")
-	jsonData, err := json.Marshal(renderAction)
+	jsonResponse, err := json.Marshal(renderAction)
 	if err != nil {
 		slog.Error("Marshal error", "error", unmarshalErr.Error())
 		w.WriteHeader(http.StatusInternalServerError)
 		return
 	}
 	w.Header().Set("Content-Type", "application/json")
-	w.Write(jsonData)
+	w.Write(jsonResponse)
 }
 
 func main() {
