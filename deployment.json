@@ -1,0 +1,19 @@
+{
+  "oauthScopes": ["https://www.googleapis.com/auth/gmail.addons.execute", "https://www.googleapis.com/auth/gmail.addons.current.message.readonly", "https://www.googleapis.com/auth/spreadsheets"],
+  "addOns": {
+    "common": {
+      "name": "Invoice",
+      "logoUrl": "https://storage.googleapis.com/innovatorshivepictures/gmailaddonlogo.png",
+      "homepageTrigger": {
+        "runFunction": "https://gmailaddon-807377867216.europe-north1.run.app/main"
+      }
+    },
+    "gmail": {
+      "contextualTriggers": [{
+        "unconditional": {
+        },
+        "onTriggerFunction": "https://gmailaddon-807377867216.europe-north1.run.app/message"
+      }]
+    }
+  }
+}
