@@ -1,3 +1,16 @@
+/*
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+	https://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+*/
 package main
 
 import (
@@ -133,16 +146,6 @@ func Submit(w http.ResponseWriter, r *http.Request) {
 
 func returnError(w http.ResponseWriter) {
 	var unmarshalErr *json.UnmarshalTypeError
-	// var renderAction addons.RenderAction
-	//
-	// action := renderAction.CreateAction()
-	// navigation := action.AddNavigation()
-	// card := navigation.AddCard()
-	//
-	// card.AddHeader("CIRCLE")
-	// section := card.AddSection("Error")
-	// section.AddWidget().
-	// 	AddTextParagraph("Error in processing mail, is this an Invoice mail?")
 	renderAction := getErrorCard("Error in processing mail, is this an Invoice mail?")
 	jsonResponse, err := json.Marshal(renderAction)
 	if err != nil {
